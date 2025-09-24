@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <h1 class="title"><span class="rainbow">Super</span> contador!</h1>
+    <div class="update-note">Ahora en Kubernetes!</div>
     <div class="subtitle">
       Este es un contador que usa Nest como backend y Redis para la persistencia
     </div>
@@ -27,9 +28,9 @@ import { onMounted, ref } from 'vue'
 const contador = ref(0)
 const showError = ref(false)
 const isLoading = ref(false)
-const apiIncrement = ref(`${import.meta.env.VITE_BACKEND}/counter/increment`)
-const apiDecrement = ref(`${import.meta.env.VITE_BACKEND}/counter/decrement`)
-const apiCounter = ref(`${import.meta.env.VITE_BACKEND}/counter`)
+const apiIncrement = ref(`${window._env_.VITE_BACKEND}/counter/increment`)
+const apiDecrement = ref(`${window._env_.VITE_BACKEND}/counter/decrement`)
+const apiCounter = ref(`${window._env_.VITE_BACKEND}/counter`)
 
 async function reducir() {
   const start = Date.now()
@@ -240,5 +241,19 @@ onMounted(async () => {
   -webkit-text-fill-color: transparent;
   animation: shimmer 4s infinite linear;
   text-transform: uppercase;
+}
+
+.update-note {
+  transform: rotateZ(45deg);
+  position: absolute;
+  top: 55px;
+  right: -85px;
+  border: 2px solid #dd2222;
+  background-color: #772222;
+  width: 300px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
