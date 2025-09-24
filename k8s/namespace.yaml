@@ -1,0 +1,5 @@
+# Defino un namespace para tener todo organizado
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: super-contador

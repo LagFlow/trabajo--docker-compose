@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-config
+  namespace: super-contador
+data:
+  config.js: |
+    window._env_ = {
+      VITE_BACKEND: "http://34.39.183.148:3000"
+    };

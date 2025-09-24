@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: super-contador
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: ghcr.io/lagflow/trabajo--docker-compose:backend
+          ports:
+            - containerPort: 3000
+          env:
+            - name: REDIS_HOST
+              value: redis           # matches the Service name
+            - name: REDIS_PORT
+              value: "6379"
